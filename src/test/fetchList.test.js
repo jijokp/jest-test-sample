@@ -9,15 +9,12 @@ describe('NameCollection component specs', () => {
     const getStub = jest
       .spyOn(api, 'getNameCollection')
       .mockResolvedValue(['John Doe']);
-
-    
+   
     const { getAllByTestId, queryByText } = render(<List />);
     const elementBeforeWait = queryByText('John Doe');
     expect(elementBeforeWait).not.toBeInTheDocument();
-
     const elements = await waitFor(() => getAllByTestId('name'));
-
-    
+   
     expect(getStub).toHaveBeenCalled();
     expect(elements.length).toEqual(1);
     expect(elements[0].textContent).toEqual('John Doe');

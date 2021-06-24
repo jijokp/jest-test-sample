@@ -1,15 +1,20 @@
-import './App.css';
-import {List} from "./components/fetchList"
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import listNames from './pages/listNames';
+import todo from './pages/todo';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Test Components</h1>
-          <List/>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div>
+          <Route exact path="/" component={listNames}/>
+          <Route path="/todo" component={todo}/>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
